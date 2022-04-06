@@ -1,6 +1,26 @@
 
-h1{
-    color: blueviolet;
-    margin-left: auto;
 
+body {
+    background: #eaeaea;
+    background-color: #9932CC;
+    font-family: 'Roboto', sans-serif;
+    text-align: center;
+
+    
+
+}
+
+h1{
+    color: white;
+    margin-top: auto;
+
+}
+
+.card{
+  border-radius: 5px;
+  box-shadow: 7px 7px 13px 0px rgba(50, 50, 50, 0.22);
+  padding: 30px;
+  margin: 20px;
+  width: 400px;
+  transition: all 0.3s ease-out;
 }
