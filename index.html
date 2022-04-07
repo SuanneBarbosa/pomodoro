@@ -17,22 +17,22 @@
 <body>
 
     <h1>Pomolove</h1>
-    <div>
+    <div class="card">
         <div id="types">
-            <button>Pomodoro</button>
-            <button>Short Break</button>
-            <button>Long Break</button>
+            <button id="actionPomodoro" onclick="actionPomodoro()">Pomodoro</button>
+            <button id="actionShortBreak" onclick="actionShortBreak()">Short Break</button>
+            <button id="actionLongBreak" onclick="actionLongBreak()">Long Break</button>
         </div>
         <br>
         <div id="timer">
             <p id="timerText">
-                00:00
+                25:00
             </p>
 
         </div>
         <br>
         <div id="action">
-            <button id="actionButton" onclick="actionPomodoro()">START</button>
+            <button id="actionButton" onclick="actionTimer()">START</button>
 
         </div>
         

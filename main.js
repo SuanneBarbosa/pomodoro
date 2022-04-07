@@ -1,44 +1,82 @@
 let actionState = false
-let inicio = 600
+let inicio = 1500
 let final = 0
+let timerInterval;
+let segundos = 0
+let minutos = Math.floor(inicio/60) 
+const pomodoroValue = 1500
+const shortBreakValue = 60
+const longBreakValue = 900
 
-function actionPomodoro() {
+function changeButtonText(newText) {
     let actionButton = document.getElementById("actionButton")
+    actionButton.innerHTML = newText
+}
+
+function actionTimer() {
+    
     if (!actionState) {
-        actionButton.innerHTML = 'STOP'
+        changeButtonText('STOP')
         //iniciar o cronometro
         iniciarCronometro()
     } else {
-        actionButton.innerHTML = 'START'
-        //iniciar o cronometro
+        changeButtonText('START')
+        //parar o cronometro
+        clearInterval(timerInterval)
     }
     actionState = !actionState
+}
+
+function changeTimer (newStarValue) {
+    clearInterval(timerInterval)
+    inicio = newStarValue
+    segundos = 0
+    minutos = Math.floor(inicio/60)
+    timerExibition()
+}
 
 
+function actionPomodoro () {
+    changeTimer(pomodoroValue)
+}
+
+
+function actionShortBreak () {
+   changeTimer(shortBreakValue)
+}
+
+function actionLongBreak () {
+    changeTimer(longBreakValue)
+}
+
+function beep () {
+    var audio = new Audio('beep beep.mp3')
+    audio.play()
 }
 
 function iniciarCronometro() {
-   
-    let segundos = 0
-    let minutos = Math.floor(inicio/60) 
-    let timerText =document.getElementById("timerText")
-
-    setInterval(() => {
+   timerInterval = setInterval(() => {
         if(segundos == 0) {
+            if(minutos == 0) {
+                actionPomodoro()
+                beep ()
+                changeButtonText('START')
+                return
+            }
             segundos = 60 
             minutos--
         } 
         inicio-- 
         segundos-- 
-        timerText.innerHTML = `${(minutos < 10) ? "0" + minutos : minutos}:${(segundos < 10) ? "0" + segundos : segundos}`
+        timerExibition()
     }, 1000)
+//quando finalizar vai executar funçoes de termino - zerar cronometro e tocar 
+}
 
-    
-
-    //quando finalizar vai executar funçoes de termino - zerar cronometro e tocar 
-
-
-
-
-
+// parar o cronometro
+//mudar o inicio
+//modificar o html
+function timerExibition () {
+    let timerText = document.getElementById("timerText")
+    timerText.innerHTML = `${(minutos < 10) ? "0" + minutos : minutos}:${(segundos < 10) ? "0" + segundos : segundos}`
 }
