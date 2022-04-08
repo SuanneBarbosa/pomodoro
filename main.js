@@ -14,14 +14,11 @@ function changeButtonText(newText) {
 }
 
 function actionTimer() {
-    
     if (!actionState) {
         changeButtonText('STOP')
-        //iniciar o cronometro
         iniciarCronometro()
     } else {
         changeButtonText('START')
-        //parar o cronometro
         clearInterval(timerInterval)
     }
     actionState = !actionState
@@ -35,11 +32,9 @@ function changeTimer (newStarValue) {
     timerExibition()
 }
 
-
 function actionPomodoro () {
     changeTimer(pomodoroValue)
 }
-
 
 function actionShortBreak () {
    changeTimer(shortBreakValue)
@@ -70,12 +65,8 @@ function iniciarCronometro() {
         segundos-- 
         timerExibition()
     }, 1000)
-//quando finalizar vai executar funçoes de termino - zerar cronometro e tocar 
 }
 
-// parar o cronometro
-//mudar o inicio
-//modificar o html
 function timerExibition () {
     let timerText = document.getElementById("timerText")
     timerText.innerHTML = `${(minutos < 10) ? "0" + minutos : minutos}:${(segundos < 10) ? "0" + segundos : segundos}`
